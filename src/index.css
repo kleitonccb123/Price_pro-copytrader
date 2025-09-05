@@ -1,0 +1,193 @@
+@tailwind  base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0E1627;
+  --bg-grad-1: #0E1627;
+  --bg-grad-2: #031B4E;
+  --bg-grad-3: #053EA1;
+  --primary: #0557C3;
+  --primary-2: #2A57BA;
+  --text: #FFFFFF;
+  --muted: #C9D3E0;
+  --divider: rgba(255,255,255,0.08);
+  --glass: rgba(255,255,255,0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  background-image: 
+    radial-gradient(60% 60% at 20% 10%, var(--bg-grad-3) 0%, transparent 40%),
+    radial-gradient(70% 70% at 80% 20%, var(--bg-grad-2) 0%, transparent 45%),
+    radial-gradient(100% 100% at 50% 120%, #000000 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--divider);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-2);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--divider);
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  background: var(--glass);
+  color: white;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://imagedelivery.net/FIZL8110j4px64kO6qJxWA/526a3f8e-efdb-4af9-d574-98cd15022000/public');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.conversion-glow {
+  box-shadow: 0 0 20px rgba(5, 87, 195, 0.3);
+}
+
+.cta-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+  box-shadow: 0 8px 32px rgba(5, 87, 195, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(5, 87, 195, 0.6);
+}
+ 
