@@ -1,12 +1,14 @@
-name: Deploy Hostinger (Vite)
+name: Deploy Hostinger (Vite) - no-lockfile
 
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,17 +16,17 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '20'   # sem cache; não requer lockfile
 
-      - name: Install deps (lockfile)
-        run: npm ci
+      - name: Install dependencies
+        run: npm install
 
       - name: Build
         run: npm run build
 
       - name: Add .htaccess (SPA fallback)
         run: |
+          mkdir -p dist
           cat > dist/.htaccess <<'EOF'
           RewriteEngine On
           RewriteCond %{REQUEST_FILENAME} !-f
@@ -40,6 +42,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
-          local-dir: ./dist/     # <- precisa terminar com /
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}   # ex.: /public_html/
+          local-dir: ./dist/                          # precisa terminar com /
           dangerous-clean-slate: true
